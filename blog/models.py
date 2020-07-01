@@ -4,6 +4,10 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from wagtail.core.fields import StreamField
+from wagtail.core import blocks
+from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.embeds.blocks import EmbedBlock
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -20,7 +24,6 @@ def get_context(self, request):
         context['blogpages'] = live_blogpages.order_by('-first_published_at')
         return context
 
-
 class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
@@ -35,6 +38,6 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         FieldPanel('intro'),
-        FieldPanel('body', classname="full"),
         ImageChooserPanel('image'),
+        
     ]

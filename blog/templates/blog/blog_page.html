@@ -5,6 +5,6 @@
     <p class="meta">{{ page.date }}</p>
     {% image page.image fill-320x320 %}
     <div class="intro">{{ page.intro }}</div>
-        {{ page.body|richtext }}
+    {{ page.body|richtext }}
     <p><a href="{% pageurl page.get_parent %}">Return to blog</a></p>
 {% endblock %}
