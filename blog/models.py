@@ -27,17 +27,19 @@ def get_context(self, request):
 class BlogPage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
-    body = RichTextField(blank=True)
     image = models.ForeignKey(
     'wagtailimages.Image',
     null=True,
     blank=True,
     on_delete=models.SET_NULL
 )
+    body = StreamField([
+    ('heading', blocks.CharBlock(classname="full title", icon="title")),
+    ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
+    ('embed', EmbedBlock(icon="media")),
+])
 
     content_panels = Page.content_panels + [
-        FieldPanel('date'),
-        FieldPanel('intro'),
+        StreamFieldPanel('body'),
         ImageChooserPanel('image'),
-        
     ]
