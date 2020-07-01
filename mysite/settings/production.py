@@ -2,6 +2,7 @@ import os
 import dj_database_url
 from .base import *
 
+
 env = os.environ.copy()
 
 SECRET_KEY = env['SECRET_KEY']
@@ -20,6 +21,7 @@ except ImportError:
    pass
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
