@@ -14,6 +14,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 env = os.environ.copy()
 
+#Silence warning 
+import warnings
+warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base" )
+
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
