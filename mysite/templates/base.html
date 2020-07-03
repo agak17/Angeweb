@@ -31,28 +31,37 @@
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
-
-    <body class="{% block body_class %}{% endblock %}">
+    
+     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %} 
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <a class="navbar-brand" href="#"><img src="/logo/tumalogo.png"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-brand" href="#">
+            <img src="" alt="Logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Money transfer<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Send Money<span class="sr-only">(current)</span></a>
               </li>
               {% for item in navigation.menu_items.all %}
                         <li>
                             <a href="{{ item.link }}" class="nav-link"{% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
                         </li>
                     {% endfor %}
-                  </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit">Register</button>
-            </form>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Company
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">About us</a>
+                  <a class="dropdown-item" href="#">Contact</a>
+                  <a class="dropdown-item" href="#">Careers</a>
+                </div>
+              </li>
+            </ul>
           </div>
         </nav>
 
